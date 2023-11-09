@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png" >
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+    <title>Age Calculator App</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins;
+    }
+    body {
+        min-height: 100vh;
+        background-color: hsl(0, 0%, 94%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container {
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 14px 10px 150px 14px;
+        width: 600px;
+        padding: 32px;
+    }
+    .box {
+        display: flex;
+    }
+    .date-format {
+        display: flex;
+        flex-direction: column;
+        margin-right: 16px;
+    }
+    .date-format > label {
+        color: hsl(0, 1%, 44%);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+    }
+    .date-format > input[type=text] {
+        padding: 10px;
+        font-size: 24px;
+        outline: none;
+        border: 1px solid hsla(0, 0%, 86%, 0.4);
+        border-radius: 8px;
+        width: 110px;
+        cursor: pointer;
+    }
+    .date-format > input:focus {
+        border-color: hsl(259, 100%, 65%);
+        caret-color: hsl(259, 100%, 65%);
+    }
+    .next-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        all: unset;
+    }
+    .line {
+        border-bottom: 2px solid hsla(0, 0%, 86%, 0.4);
+        width: 100%;
+    }
+    .circle {
+        background-color: hsl(259, 100%, 65%);
+        width: 70px;
+        height: 60px;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+    }
+    .circle:hover {
+        background-color: hsl(0, 0%, 8%);
+    }
+    img {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+    }
+    .below-text span {
+        color: hsl(259, 100%, 65%);
+    }
+    .below-text > p {
+        font-size: 58px;
+        font-weight: 800;
+        color: hsl(0, 0%, 8%);
+        padding: 0;
+        margin: 0;
+    }
+    .day-error, .year-error, .month-error {
+        color: hsl(0, 100%, 67%);
+        font-size: 12px;
+        font-weight: 400;
+    }
+</style>
+<body>
+    <main class="container">
+        <form class="form">
+            <div class="box">
+                <div class="date-format">
+                    <label for="day">DAY</label>
+                    <input type="text" id="day" placeholder="DD" class="user-input">
+                    <span class="day-error"></span>
+                </div>
+                <div class="date-format">
+                    <label for="month">MONTH</label>
+                    <input type="text" id="month" placeholder="MM" class="user-input">
+                    <span class="month-error"></span>
+                </div>
+                <div class="date-format">
+                    <label for="year">YEAR</label>
+                    <input type="text" id="year" placeholder="YYYY" class="user-input">
+                    <span class="year-error"></span>
+                </div>
+            </div>
+            <div class="next-line">
+                <div class="line"></div>
+                <!-- <p>&#8211;</p> -->
+                <button class="circle">
+                    <img src="Assets/icon-arrow.svg" alt="icon-arrow">
+                </button>
+            </div>
+        </form>
+        <div class="below-text">
+            <p><span id="year-display">&#8211; &#8211;</span> years</p>
+            <p><span id="month-display">&#8211; &#8211;</span> months</p>
+            <p><span id="day-display">&#8211; &#8211;</span> days</p>
+        </div>
+    </main>
+</body>
+</html>
+<script src="script.js"></script>

@@ -33,7 +33,6 @@ form.addEventListener('submit', function(e) {
         dayDisplay.innerHTML = dateDiff
         userDay.classList.remove('invalid')
     }
-
     if (monthData == '') {
         monthError.innerHTML = 'This field is required'
         userMonth.classList.add('invalid')
@@ -47,7 +46,6 @@ form.addEventListener('submit', function(e) {
         monthDisplay.innerHTML = monthDiff
         userMonth.classList.remove('invalid')
     }
-
     if (yearData == '') {
         yearError.innerHTML = 'This field is required'
         userYear.classList.add('invalid')
@@ -72,27 +70,22 @@ form.addEventListener('input', function() {
         userDay.classList.add('invalid')
         labelDay.classList.add('invalid')
     }
-    else {
-        dayError.innerHTML = ''
-        userDay.classList.remove('invalid')
-    }
-    if (dayData < 1 || dayData > 31) {
+    else if (dayData < 1 || dayData > 31) {
         dayError.innerHTML = "Must be a valid date"
         userDay.classList.add('invalid')
+        labelDay.classList.add('invalid')
     }
     else {
         dayError.innerHTML = ''
         userDay.classList.remove('invalid')
-    }
+        labelDay.classList.remove('invalid')
+    }    
     if (monthData === '') {
         monthError.innerHTML = 'This field is required'
         userMonth.classList.add('invalid')
+        labelMonth.classList.add('invalid')
     }
-    else {
-        monthError.innerHTML = ''
-        userMonth.classList.remove('invalid')
-    }
-    if (monthData < 0 || monthData > 11) {
+    else if (monthData < 0 || monthData > 11) {
         monthError.innerHTML = "Must be a valid month"
         userMonth.classList.add('invalid')
         labelMonth.classList.add('invalid')
@@ -100,16 +93,14 @@ form.addEventListener('input', function() {
     else {
         monthError.innerHTML = ''
         userMonth.classList.remove('invalid')
+        labelMonth.classList.remove('invalid')
     }
     if (yearData == '') {
         yearError.innerHTML = 'This field is required'
         userYear.classList.add('invalid')
+        labelYear.classList.add('invalid')
     }
-    else {
-        yearError.innerHTML = ''
-        userYear.classList.remove('invalid')
-    }
-    if (yearData > 3000) {
+    else if (yearData > 3000) {
         yearError.innerHTML = "Must be in the past"
         userYear.classList.add('invalid')
         labelYear.classList.add('invalid')
@@ -117,5 +108,6 @@ form.addEventListener('input', function() {
     else {
         yearError.innerHTML = ''
         userYear.classList.remove('invalid');
+        labelYear.classList.remove('invalid')
     }
 })

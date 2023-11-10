@@ -8,7 +8,10 @@ const form = document.querySelector('form')
 const dayError = document.querySelector('.day-error')
 const monthError = document.querySelector('.month-error')
 const yearError = document.querySelector('.year-error')
-const inputEl = document.querySelector('input')
+const labelDay = document.querySelector('#label-day')
+const labelMonth = document.querySelector('#label-month')
+const labelYear = document.querySelector('#label-year')
+
 
 
 form.addEventListener('submit', function(e) {
@@ -16,33 +19,46 @@ form.addEventListener('submit', function(e) {
         let dayData = userDay.value
         let monthData = userMonth.value
         let yearData = userYear.value
-    if (dayData == '' && monthData == '' && yearData == '') {
+        let now = new Date()
+    if (dayData == '') {
         dayError.innerHTML = 'This field is required'
-        monthError.innerHTML = 'This field is required'
-        yearError.innerHTML = 'This field is required'
         userDay.classList.add('invalid')
-        userMonth.classList.add('invalid')
-        userYear.classList.add('invalid')
-    }
+        labelDay.classList.add('invalid')
+    } 
     else if (dayData < 1 || dayData > 31) {
         dayError.innerHTML = "Must be a valid date"
     }
+    else {
+        let dateDiff = Math.abs(now.getDate() - dayData)
+        dayDisplay.innerHTML = dateDiff
+        userDay.classList.remove('invalid')
+    }
+
+    if (monthData == '') {
+        monthError.innerHTML = 'This field is required'
+        userMonth.classList.add('invalid')
+        labelMonth.classList.add('invalid')
+    }
     else if (monthData < 0 || monthData > 11) {
         monthError.innerHTML = "Must be a valid month"
+    }
+    else {
+        let monthDiff = now.getMonth() - monthData
+        monthDisplay.innerHTML = monthDiff
+        userMonth.classList.remove('invalid')
+    }
+
+    if (yearData == '') {
+        yearError.innerHTML = 'This field is required'
+        userYear.classList.add('invalid')
+        labelYear.classList.add('invalid')
     }
     else if (yearData > 3000) {
         yearError.innerHTML = "Must be in the past"
     }
     else {
-        let now = new Date()
-        let dateDiff = Math.abs(now.getDate() - dayData)
-        let monthDiff = now.getMonth() - monthData
         let yearDiff = now.getFullYear() - yearData
-        dayDisplay.innerHTML = dateDiff
-        monthDisplay.innerHTML = monthDiff
         yearDisplay.innerHTML = yearDiff
-        userDay.classList.remove('invalid')
-        userMonth.classList.remove('invalid')
         userYear.classList.remove('invalid')
     }
 })
@@ -51,9 +67,10 @@ form.addEventListener('input', function() {
     let dayData = userDay.value
     let monthData = userMonth.value
     let yearData = userYear.value
-    if (dayData == '') {
+    if (dayData === '') {
         dayError.innerHTML = 'This field is required'
         userDay.classList.add('invalid')
+        labelDay.classList.add('invalid')
     }
     else {
         dayError.innerHTML = ''
@@ -78,6 +95,7 @@ form.addEventListener('input', function() {
     if (monthData < 0 || monthData > 11) {
         monthError.innerHTML = "Must be a valid month"
         userMonth.classList.add('invalid')
+        labelMonth.classList.add('invalid')
     }
     else {
         monthError.innerHTML = ''
@@ -94,6 +112,7 @@ form.addEventListener('input', function() {
     if (yearData > 3000) {
         yearError.innerHTML = "Must be in the past"
         userYear.classList.add('invalid')
+        labelYear.classList.add('invalid')
     }
     else {
         yearError.innerHTML = ''

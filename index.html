@@ -57,7 +57,7 @@
     input[type=text].invalid {
         border-color: hsl(0, 100%, 67%);
     }
-    label.invalid-label {
+    label.invalid {
         color: hsl(0, 100%, 67%);
     }
     .next-line {
@@ -154,18 +154,18 @@
     <main class="container">
         <form class="form">
             <div class="box">
-                <div class="date-format">
-                    <label for="day">DAY</label>
+                <div class="date-format invalid">
+                    <label for="day" id="label-day">DAY</label>
                     <input type="text" id="day" placeholder="DD">
                     <span class="day-error"></span>
                 </div>
                 <div class="date-format">
-                    <label for="month">MONTH</label>
+                    <label for="month" id="label-month">MONTH</label>
                     <input type="text" id="month" placeholder="MM">
                     <span class="month-error"></span>
                 </div>
                 <div class="date-format">
-                    <label for="year">YEAR</label>
+                    <label for="year" id="label-year">YEAR</label>
                     <input type="text" id="year" placeholder="YYYY">
                     <span class="year-error"></span>
                 </div>
